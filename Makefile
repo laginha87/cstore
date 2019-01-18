@@ -1,5 +1,5 @@
 build:
-	go build -o releases/store main.go
+	go build -o releases/cstore main.go
 
 install: build
-	cp releases/store /opt/bin
+	cp releases/cstore /opt/bin

@@ -134,6 +134,26 @@ func main() {
 			},
 			Aliases: []string{"e"},
 		},
+		{
+			Name: "list",
+			Action: func(c *cli.Context) error {
+				fileHandle, err := os.Open(filePath)
+				if err != nil {
+					panic("Cannot open file")
+					os.Exit(1)
+				}
+				defer fileHandle.Close()
+
+				sc := bufio.NewScanner(fileHandle)
+				i := 1
+				for sc.Scan() {
+					fmt.Printf("%d: %s\n", i, sc.Text())
+					i++
+				}
+				return nil
+			},
+			Aliases: []string{"l"},
+		},
 	}
 
 	err := app.Run(os.Args)
