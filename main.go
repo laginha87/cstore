@@ -37,7 +37,11 @@ func main() {
 		Aliases: []string{"l"},
 	}
 
+	var zshCmd = &cobra.Command{
+		Use: "zsh",
+		Run: actions.Zsh,
+	}
 	var rootCmd = &cobra.Command{Use: "command-storer"}
-	rootCmd.AddCommand(initCmd, addCmd, resetCmd, listCmd, execCmd)
+	rootCmd.AddCommand(initCmd, addCmd, resetCmd, listCmd, execCmd, zshCmd)
 	rootCmd.Execute()
 }
